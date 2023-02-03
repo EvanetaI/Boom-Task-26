@@ -10,22 +10,12 @@ export default class Application extends EventEmitter {
 
   constructor() {
     super();
+    this._loading = document.getElementsByClassName(
+      "progress is-small is-primary"
+    );
 
-    // const box = document.createElement("div");
-    // box.classList.add("box");
-    // box.innerHTML = this._render({
-    //   name: "Placeholder",
-    //   terrain: "placeholder",
-    //   population: 0,
-    // });
-
-    // document.body.querySelector(".main").appendChild(box);
-
-    this._loading = document.getElementsByClassName("progress is-small is-primary");
-
-    this.on(Application.events.READY, this._load)
+    this.on(Application.events.READY, this._load);
     this.emit(Application.events.READY);
-    
   }
 
   _render({ name, terrain, population }) {
@@ -64,7 +54,7 @@ export default class Application extends EventEmitter {
     this._stopLoading();
   }
 
-  _create(data){
+  _create(data) {
     const box = document.createElement("div");
     box.classList.add("box");
     box.innerHTML = this._render({
@@ -72,7 +62,7 @@ export default class Application extends EventEmitter {
       terrain: data.terrain,
       population: data.population,
     });
-  document.body.querySelector(".main").appendChild(box);
+    document.body.querySelector(".main").appendChild(box);
   }
 
   _startLoading() {
