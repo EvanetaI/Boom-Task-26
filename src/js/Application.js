@@ -2,9 +2,7 @@ import EventEmitter from "eventemitter3";
 import image from "../images/planet.svg";
 
 export default class Application extends EventEmitter {
-  _loading = document.getElementsByClassName(
-    "progress is-small is-primary"
-  );
+  _loading;
   
   static get events() {
     return {
@@ -15,7 +13,10 @@ export default class Application extends EventEmitter {
   constructor() {
     super();
    
-
+    this._loading = document.getElementsByClassName(
+      "progress is-small is-primary"
+    );
+    
     this.on(Application.events.READY, this._load);
     this.emit(Application.events.READY);
   }
