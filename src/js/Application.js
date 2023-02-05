@@ -13,7 +13,7 @@ export default class Application extends EventEmitter {
   constructor() {
     super();
    
-    this._loading = document.getElementsByTagName("progress");
+    this._loading = document.getElementsByClassName("progress");
     
     this.on(Application.events.READY, this._load);
     this.emit(Application.events.READY);
@@ -67,9 +67,9 @@ export default class Application extends EventEmitter {
   }
 
   _startLoading() {
-    this._loading[0].style.visibility = "visible";
+    this._loading[0].style.display = "block";
   }
   _stopLoading() {
-    this._loading[0].style.visibility = "hidden";
+    this._loading[0].style.display = "none";
   }
 }
